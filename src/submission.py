@@ -123,8 +123,8 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--teacher_ckpt", type=str, default=None,
                    help="Default: <outputs_dir>/checkpoints/ema_teacher.pt")
 
-    # dynamic topk (threshold=0.65, min 2 max 3)
-    p.add_argument("--threshold", type=float, default=0.65)
+    # dynamic topk (threshold=0.75, min 2 max 3)
+    p.add_argument("--threshold", type=float, default=0.75)
     p.add_argument("--min_labels", type=int, default=2)
     p.add_argument("--max_labels", type=int, default=3)
 
