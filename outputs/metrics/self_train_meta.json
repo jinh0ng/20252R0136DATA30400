@@ -1,0 +1,75 @@
+{
+  "student_ckpt": "/home/sagemaker-user/new/outputs/checkpoints/gat.pt",
+  "y_silver_path": "/home/sagemaker-user/new/data/silver/y_silver.npy",
+  "adj_path": "/home/sagemaker-user/new/data/graph/adj.pt",
+  "rounds": 2,
+  "epochs_st": 3,
+  "alpha_ema": 0.99,
+  "t_pos": 0.9,
+  "t_neg": 0.1,
+  "ema_pred_batch": 1024,
+  "train_losses": [
+    {
+      "round": 1,
+      "epoch": 1,
+      "loss": 0.01086858149667884
+    },
+    {
+      "round": 1,
+      "epoch": 2,
+      "loss": 0.009885664385243631
+    },
+    {
+      "round": 1,
+      "epoch": 3,
+      "loss": 0.009389458749954541
+    },
+    {
+      "round": 2,
+      "epoch": 1,
+      "loss": 0.00834152339972043
+    },
+    {
+      "round": 2,
+      "epoch": 2,
+      "loss": 0.007829280902839828
+    },
+    {
+      "round": 2,
+      "epoch": 3,
+      "loss": 0.0075870095137685
+    }
+  ],
+  "valid_losses": [
+    {
+      "round": 1,
+      "epoch": 1,
+      "loss": 0.008368345536165275
+    },
+    {
+      "round": 1,
+      "epoch": 2,
+      "loss": 0.007648898820431
+    },
+    {
+      "round": 1,
+      "epoch": 3,
+      "loss": 0.007405588155275696
+    },
+    {
+      "round": 2,
+      "epoch": 1,
+      "loss": 0.0058695948201115756
+    },
+    {
+      "round": 2,
+      "epoch": 2,
+      "loss": 0.006050654467657617
+    },
+    {
+      "round": 2,
+      "epoch": 3,
+      "loss": 0.006203548460232429
+    }
+  ]
+}

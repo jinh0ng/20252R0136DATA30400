@@ -1,0 +1,27 @@
+{
+  "dataset_dir": "/home/sagemaker-user/new/project_release/Amazon_products",
+  "emb_subdir": "embeddings_mpnet",
+  "pid_subdir": "embeddings_mpnet",
+  "num_classes": 531,
+  "seed": 42,
+  "top_k_core": 3,
+  "min_score": null,
+  "batch_size": 1024,
+  "include_ancestors": true,
+  "outputs": {
+    "core_classes": "/home/sagemaker-user/new/data/core/core_classes.npy",
+    "y_silver": "/home/sagemaker-user/new/data/silver/y_silver.npy",
+    "adj_npy": "/home/sagemaker-user/new/data/graph/adj.npy",
+    "roots": "/home/sagemaker-user/new/data/meta/roots.json",
+    "adj_pt": "/home/sagemaker-user/new/data/graph/adj.pt"
+  },
+  "stats": {
+    "avg_pos_per_doc": 5.062434196472168,
+    "min_pos_per_doc": 3,
+    "max_pos_per_doc": 10,
+    "n_train": 29487,
+    "emb_dim": 768,
+    "n_edges": 568,
+    "n_roots": 6
+  }
+}

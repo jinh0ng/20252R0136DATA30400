@@ -1,0 +1,28 @@
+{
+  "dataset_dir": "/home/sagemaker-user/new/project_release/Amazon_products",
+  "emb_dir": "/home/sagemaker-user/new/project_release/Amazon_products/embeddings_mpnet",
+  "model_name": "sentence-transformers/all-mpnet-base-v2",
+  "batch_size": 64,
+  "max_seq_length": 128,
+  "normalize_embeddings": true,
+  "shapes": {
+    "train_doc_mpnet": [
+      29487,
+      768
+    ],
+    "test_doc_mpnet": [
+      19658,
+      768
+    ],
+    "class_name_mpnet": [
+      531,
+      768
+    ],
+    "class_kw_mpnet": [
+      531,
+      768
+    ],
+    "pid_train": 29487,
+    "pid_test": 19658
+  }
+}
