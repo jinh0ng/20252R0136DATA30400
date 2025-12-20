@@ -11,43 +11,35 @@ BigDataAnalysis Lecture Final Project
 ## 1. Directory Structure
 
 프로젝트 루트(`~/20252R0136DATA30400`) 기준 구조는 아래와 같습니다.
-
+```
 20252R0136DATA30400/
-├── README.md
-├── run_mpnet.sh # mpnet 전체 파이프라인 실행
-├── run_gte.sh # gte 전체 파이프라인 실행
-├── run_bge.sh # bge 전체 파이프라인 실행 (최고 성능)
-├── src/
-│ ├── build_silver.py
-│ ├── make_embeddings_mpnet.py
-│ ├── train_gat.py
-│ ├── self_train.py
-│ ├── submission.py
-│ └── utils/
-│ ├── embeddings.py
-│ ├── paths.py
-│ ├── io.py
-│ └── ...
-├── project_release/
-│ └── Amazon_products/
-│ ├── classes.txt
-│ ├── class_hierarchy.txt
-│ ├── class_related_keywords.txt
-│ ├── train/
-│ │ └── train_corpus.txt
-│ ├── test/
-│ │ └── test_corpus.txt
-├── data_mpnet/ # mpnet 실버라벨/그래프 출력
-├── outputs_mpnet/ # mpnet 체크포인트/서브미션 출력
-├── data_gte/
-├── outputs_gte/
-├── data_bge/
-└── outputs_bge/
+├─ src/
+│  ├─ make_embeddings_mpnet.py   # 임베딩 생성 (MPNet/GTE/BGE 공통)
+│  ├─ build_silver.py            # silver label + adj 생성
+│  ├─ train_gat.py               # GAT 학습
+│  ├─ self_train.py              # EMA self-train
+│  ├─ submission.py              # test 추론 + dynamic top-k + csv 저장
+│  └─ utils/
+│     ├─ paths.py                # dataset_dir/data_dir/outputs_dir 규칙
+│     ├─ embeddings.py           # 임베딩/ pid_list 로드
+│     ├─ models_gat.py           # GATLayer, TaxoClassGAT
+│     ├─ taxonomy.py             # taxonomy 경로/ancestor 처리
+│     └─ io.py                   # np/json 저장 유틸
+├─ project_release/
+│  └─ Amazon_products/           # 데이터셋 루트
+│     ├─ train/, test/
+│     ├─ classes.txt, class_hierarchy.txt, class_related_keywords.txt
+│     └─ embeddings_bge/         # (주 사용) BGE 임베딩 결과
+├─ data_bge/                     # (주 사용) silver/graph 중간 산출물
+│  ├─ silver/                    # y_silver.npy, y_refined_round*.npy, core_classes.json
+│  └─ graph/                     # adj.npy
+├─ outputs_bge/                  # (주 사용) 학습/추론 결과
+│  ├─ checkpoints/               # gat.pt, ema_teacher.pt
+│  └─ submissions/               # submission_bge.csv
+└─ run_bge.sh                    # BGE 전체 파이프라인 실행 스크립트
 
+```
 
-
-> 참고: `embeddings_*` 폴더는 `make_embeddings_mpnet.py` 실행 시 자동 생성되며,  
-> `data_*`, `outputs_*` 폴더도 각 run 스크립트 실행 시 자동 생성됩니다.
 
 ---
 
@@ -120,45 +112,49 @@ BigDataAnalysis Lecture Final Project
 ---
 
 ## 3. How to Run
-3.2 실행 (임베딩별 전체 파이프라인)
+### 3.1 One-time setup (make scripts executable)
+
+```bash
+cd ~/20252R0136DATA30400
+chmod +x run_bge.sh
+```
+
+
+### 3.2 실행 (임베딩별 전체 파이프라인)
 
 MPNet:
-
-./run_mpnet.sh
-
+```./run_mpnet.sh```
 
 GTE:
-
-./run_gte.sh
-
+```./run_gte.sh```
 
 BGE (추천 / 최고 성능):
-./run_bge.sh
-
+```./run_bge.sh```
 
 실행 완료 후 제출 파일은 아래에 저장됩니다.
 outputs_mpnet/submissions/submission_mpnet.csv
 outputs_gte/submissions/submission_gte.csv
 outputs_bge/submissions/submission_bge.csv
 
-4. Useful Overrides (Environment Variables)
+## 4. Useful Overrides (Environment Variables)
 실행 시 환경변수로 주요 파라미터를 간단히 변경할 수 있습니다.
 임베딩 강제 재생성
-FORCE_EMB=1 ./run_bge.sh
+```FORCE_EMB=1 ./run_bge.sh
 submission top-k 정책 변경 (예: 더 많은 label 허용)
 THRESHOLD=0.70 MAX_LABELS=4 OUT_NAME=submission_bge_t070_k24.csv ./run_bge.sh
+```
 
-5. Embedding Models Tested & Result Summary
+## 5. Embedding Models Tested & Result Summary
 동일한 downstream 파이프라인(GAT + EMA self-training)에서 임베딩 모델만 교체하여 성능을 비교했습니다.
-MPNet: sentence-transformers/all-mpnet-base-v2
+```MPNet: sentence-transformers/all-mpnet-base-v2
 GTE: thenlper/gte-base
 BGE: BAAI/bge-base-en-v1.5
-실험 결과, **BGE가 가장 높은 Kaggle score(약 0.48610)**를 기록하여 최종 제출에 사용했습니다.
+```
+실험 결과, BGE가 가장 높은 Kaggle score(약 0.48610)를 기록하여 최종 제출에 사용했습니다.
 (GTE는 약 0.474 수준으로 소폭 개선)
-
 점수는 seed / threshold 등 제출 후처리 설정에 따라 소폭 변동할 수 있습니다.
 
-6. Notes / Troubleshooting
+## 6. Notes / Troubleshooting
 (1) y_silver 파일명 대소문자
 build_silver.py 실행 결과는 data_*/silver/y_silver.npy 입니다.
 리눅스 환경에서는 대소문자 구분이 되므로, 스크립트 내부에서 해당 경로를 명시적으로 사용합니다.
