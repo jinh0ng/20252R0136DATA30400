@@ -35,7 +35,7 @@ BigDataAnalysis Lecture Final Project
 │  └─ graph/                     # adj.npy
 ├─ outputs_bge/                  # (주 사용) 학습/추론 결과
 │  ├─ checkpoints/               # gat.pt, ema_teacher.pt
-│  └─ submissions/               # submission_bge.csv
+│  └─ submissions/               # 2021350218_final.csv
 └─ run_bge.sh                    # BGE 전체 파이프라인 실행 스크립트
 
 ```
