@@ -116,7 +116,8 @@ BigDataAnalysis Lecture Final Project
 
 ```bash
 cd ~/20252R0136DATA30400
-chmod +x run_bge.sh
+chmod +x 
+run_bge.sh
 ```
 
 
