@@ -1,0 +1,52 @@
+{
+  "dataset_dir": "/home/sagemaker-user/20252R0136DATA30400/project_release/Amazon_products",
+  "emb_subdir": "embeddings_gte",
+  "pid_subdir": "embeddings_gte",
+  "train_doc_name": "train_doc_mpnet.npy",
+  "test_doc_name": "test_doc_mpnet.npy",
+  "class_name_name": "class_name_mpnet.npy",
+  "num_classes": 531,
+  "edges": 568,
+  "roots": [
+    0,
+    3,
+    10,
+    23,
+    40,
+    169
+  ],
+  "top_k_core": 3,
+  "min_score": null,
+  "outputs": {
+    "y_silver": "/home/sagemaker-user/20252R0136DATA30400/data_gte/silver/y_silver.npy",
+    "core_classes": "/home/sagemaker-user/20252R0136DATA30400/data_gte/silver/core_classes.json",
+    "adj_npy": "/home/sagemaker-user/20252R0136DATA30400/data_gte/graph/adj.npy",
+    "adj_pt": null
+  },
+  "shapes": {
+    "train_doc_emb": [
+      29487,
+      768
+    ],
+    "class_name_emb": [
+      531,
+      768
+    ],
+    "sim_matrix": [
+      29487,
+      531
+    ],
+    "path_scores": [
+      29487,
+      531
+    ],
+    "y_silver": [
+      29487,
+      531
+    ],
+    "adj": [
+      531,
+      531
+    ]
+  }
+}

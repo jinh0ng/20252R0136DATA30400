@@ -1,0 +1,75 @@
+{
+  "student_ckpt": "/home/sagemaker-user/20252R0136DATA30400/outputs_gte/checkpoints/gat.pt",
+  "y_silver_path": "/home/sagemaker-user/20252R0136DATA30400/data_gte/silver/y_silver.npy",
+  "adj_path": "/home/sagemaker-user/20252R0136DATA30400/data_gte/graph/adj.npy",
+  "rounds": 2,
+  "epochs_st": 3,
+  "alpha_ema": 0.99,
+  "t_pos": 0.9,
+  "t_neg": 0.1,
+  "ema_pred_batch": 1024,
+  "train_losses": [
+    {
+      "round": 1,
+      "epoch": 1,
+      "loss": 0.011223746215051063
+    },
+    {
+      "round": 1,
+      "epoch": 2,
+      "loss": 0.009811081248968985
+    },
+    {
+      "round": 1,
+      "epoch": 3,
+      "loss": 0.009363376313120148
+    },
+    {
+      "round": 2,
+      "epoch": 1,
+      "loss": 0.007268728660880718
+    },
+    {
+      "round": 2,
+      "epoch": 2,
+      "loss": 0.0069814475170894025
+    },
+    {
+      "round": 2,
+      "epoch": 3,
+      "loss": 0.006581085601168654
+    }
+  ],
+  "valid_losses": [
+    {
+      "round": 1,
+      "epoch": 1,
+      "loss": 0.008187850675756909
+    },
+    {
+      "round": 1,
+      "epoch": 2,
+      "loss": 0.007737858929927469
+    },
+    {
+      "round": 1,
+      "epoch": 3,
+      "loss": 0.007795780001188606
+    },
+    {
+      "round": 2,
+      "epoch": 1,
+      "loss": 0.005612817357798609
+    },
+    {
+      "round": 2,
+      "epoch": 2,
+      "loss": 0.005419006199465743
+    },
+    {
+      "round": 2,
+      "epoch": 3,
+      "loss": 0.005123824014578857
+    }
+  ]
+}
